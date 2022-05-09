@@ -7,6 +7,10 @@ authors = ["Your Name <you@example.com>"]
 [tool.poetry.dependencies]
 python = ">=3.8.0,<3.9"
 numpy = "^1.22.2"
+selenium = "^4.1.5"
+selenium-wire = "^4.6.3"
+Flask = "^2.1.2"
+replit = "^3.2.4"
 
 [tool.poetry.dev-dependencies]
 
