@@ -5,12 +5,11 @@ from flask import Flask,request
 from seleniumwire.webdriver import Chrome,ActionChains,ChromeOptions
 
 ticker = 'ZILUSDT'
-ticker_datas = []
+ticker_datas = '[]'
 default_period = '15'
 
-
 options = ChromeOptions()
-options.add_argument('headless')
+options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
@@ -43,14 +42,14 @@ def run () :
         remove('chart.png')
         return chart
 
-    web.run(app,port=5050)
+    web.run(app)
 
 def ticker_data (ticker):
 
     global default_period,ticker_datas,options,driver,table,actions
 
     data = lambda x:float(driver.find_element_by_xpath(x).text)
-    datas = lambda *x:list(map(data,x))
+    datas = lambda *x:str(list(map(data,x)))
 
     driver = Chrome(chrome_options=options)
     actions = ActionChains(driver)
