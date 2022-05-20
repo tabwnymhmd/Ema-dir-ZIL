@@ -1,12 +1,12 @@
 from os import remove
 from threading import Thread
-from replit import web,clear
 from flask import Flask,request
 from seleniumwire.webdriver import Chrome,ActionChains,ChromeOptions
 
 ticker = 'ZILUSDT'
 ticker_datas = '[]'
 default_period = '15'
+default_port = 'PORT'
 
 options = ChromeOptions()
 options.add_argument('--headless')
@@ -15,12 +15,14 @@ options.add_argument('--disable-dev-shm-usage')
 
 def run () :
 
+    global default_port
+
     app = Flask(__name__)
 
     @app.route('/')
     def index () :
         global ticker_datas
-        clear()
+        print("\033[H\033[2J", end="", flush=True)
         return ticker_datas
 
     @app.route('/period')
@@ -42,7 +44,7 @@ def run () :
         remove('chart.png')
         return chart
 
-    web.run(app)
+    app.run(port=default_port)
 
 def ticker_data (ticker):
 
