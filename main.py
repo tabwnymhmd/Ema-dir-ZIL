@@ -1,7 +1,7 @@
 from os import remove
 from threading import Thread
-from flask import Flask,request
-from seleniumwire.webdriver import Chrome,ActionChains,ChromeOptions
+from flasks import Flask,request
+from seleniumwires.webdriver import Chrome,ActionChains,ChromeOptions
 
 ticker = 'ZILUSDT'
 ticker_datas = '[]'
